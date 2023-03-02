@@ -39,13 +39,16 @@ public:
 
 Pessoa gbl_obj;
 
-void func(){
+
+Pessoa * func(){
 	cout << "Entrando na função func()" << endl;
 
-	Pessoa obj("Antônio Marcondes", 8);
-	obj.print();
+	Pessoa* obj = new Pessoa("Antônio Marcondes", 8);
+	obj->print();
 
 	cout << "Saindo da função func()" << endl;
+
+	return obj;
 }
 
 int main() {
@@ -56,10 +59,15 @@ int main() {
 	cout << "Global" << endl;
 	gbl_obj.print();
 
+	Pessoa * ptr;
+	ptr = &gbl_obj;
+	ptr->print();
+
 	cout << "MAIN" << endl;
 	obj.print();
 
-	func();
+	ptr = func();
+	ptr->print();
 
 	cout << "Saindo da função main()" << endl;
 
